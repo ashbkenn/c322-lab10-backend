@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:6001/spring-2024
+    url: jdbc:postgresql://localhost:6001/ducks
     username: postgres
     password: password
 
@@ -9,6 +9,6 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-  dql:
+  sql:
     init:
       mode: always
