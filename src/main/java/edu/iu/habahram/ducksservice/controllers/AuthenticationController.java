@@ -1,7 +1,7 @@
 package edu.iu.habahram.ducksservice.controllers;
 
 import edu.iu.habahram.ducksservice.model.Customer;
-import edu.iu.habahram.ducksservice.repository.CustomerRepository;
+import edu.iu.habahram.ducksservice.repository.CustomerFileRepository;
 import edu.iu.habahram.ducksservice.security.TokenService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.*;
 public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final TokenService tokenService;
-    CustomerRepository customerRepository;
+    CustomerFileRepository customerFileRepository;
     public AuthenticationController(AuthenticationManager
                                             authenticationManager,
                                     TokenService tokenService,
-                                    CustomerRepository
-                                            customerRepository) {
+                                    CustomerFileRepository
+                                            customerFileRepository) {
         this.authenticationManager = authenticationManager;
         this.tokenService = tokenService;
-        this.customerRepository = customerRepository;
+        this.customerFileRepository = customerFileRepository;
     }
     @PostMapping("/signup")
     public void signup(@RequestBody Customer customer) {
         try {
-            customerRepository.save(customer);
+            customerFileRepository.save(customer);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

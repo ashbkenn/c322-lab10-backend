@@ -1,7 +1,7 @@
 package edu.iu.habahram.ducksservice.security;
 
 import edu.iu.habahram.ducksservice.model.Customer;
-import edu.iu.habahram.ducksservice.repository.CustomerRepository;
+import edu.iu.habahram.ducksservice.repository.CustomerFileRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDetailsSecurityService implements
         UserDetailsService {
-    CustomerRepository customerRepository;
+    CustomerFileRepository customerFileRepository;
 
-    public UserDetailsSecurityService(CustomerRepository
-                                              customerRepository) {
-        this.customerRepository = customerRepository;
+    public UserDetailsSecurityService(CustomerFileRepository
+                                              customerFileRepository) {
+        this.customerFileRepository = customerFileRepository;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class UserDetailsSecurityService implements
             throws UsernameNotFoundException {
         try {
             Customer customer =
-                    customerRepository.findByUsername(username);
+                    customerFileRepository.findByUsername(username);
             if(customer == null) {
                 throw new UsernameNotFoundException("");
             }
