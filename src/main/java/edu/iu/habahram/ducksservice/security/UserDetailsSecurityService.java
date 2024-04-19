@@ -27,7 +27,7 @@ public class UserDetailsSecurityService implements
             throws UsernameNotFoundException {
         try {
             Customer customer =
-                    customerFileRepository.findByUsername(username);
+                    customerRepository.findByUsername(username);
             if(customer == null) {
                 throw new UsernameNotFoundException("");
             }
